@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		290F64F224DA167F00F6A144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290F64F024DA167F00F6A144 /* Main.storyboard */; };
 		290F64F424DA168000F6A144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 290F64F324DA168000F6A144 /* Assets.xcassets */; };
 		290F64F724DA168000F6A144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290F64F524DA168000F6A144 /* LaunchScreen.storyboard */; };
+		290F650024DA16A300F6A144 /* Later in Frameworks */ = {isa = PBXBuildFile; productRef = 290F64FF24DA16A300F6A144 /* Later */; };
+		290F650324DA16B200F6A144 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 290F650224DA16B200F6A144 /* SwiftUIKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				290F650024DA16A300F6A144 /* Later in Frameworks */,
+				290F650324DA16B200F6A144 /* SwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,10 @@
 			dependencies = (
 			);
 			name = TestLater;
+			packageProductDependencies = (
+				290F64FF24DA16A300F6A144 /* Later */,
+				290F650224DA16B200F6A144 /* SwiftUIKit */,
+			);
 			productName = TestLater;
 			productReference = 290F64E724DA167F00F6A144 /* TestLater.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,10 @@
 				Base,
 			);
 			mainGroup = 290F64DE24DA167F00F6A144;
+			packageReferences = (
+				290F64FE24DA16A300F6A144 /* XCRemoteSwiftPackageReference "Later" */,
+				290F650124DA16B200F6A144 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+			);
 			productRefGroup = 290F64E824DA167F00F6A144 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +350,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		290F64FE24DA16A300F6A144 /* XCRemoteSwiftPackageReference "Later" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xLeif/Later";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		290F650124DA16B200F6A144 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xLeif/SwiftUIKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		290F64FF24DA16A300F6A144 /* Later */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 290F64FE24DA16A300F6A144 /* XCRemoteSwiftPackageReference "Later" */;
+			productName = Later;
+		};
+		290F650224DA16B200F6A144 /* SwiftUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 290F650124DA16B200F6A144 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
+			productName = SwiftUIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 290F64DF24DA167F00F6A144 /* Project object */;
 }
