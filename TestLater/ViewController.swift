@@ -9,32 +9,21 @@
 import UIKit
 import SwiftUIKit
 import Later
-import NIO
-import Combine
 
 class ViewController: UIViewController {
     private let imageURL = "https://github.com/0xLeif/SwiftUIKit/blob/master/assets/SwiftUIKit_logo_v1.png?raw=true"
     
-    private var bag = [AnyCancellable]()
-    
-    private lazy var futureImage: EventLoopFuture<UIImage?> = Later.default.promise { (promise) in
+    private lazy var futureImage: LaterValue<UIImage?> = Later.promise { (promise) in
         sleep(3)
         URL(string: self.imageURL).map { url in
-            URLSession.shared.dataTaskPublisher(for: url)
-                .sink(receiveCompletion: { (event) in
-                    
-                    print(event)
-                    
-                }) { (data: Data, response: URLResponse) in
-                    
-                    guard let image = UIImage(data: data) else {
-                        promise.succeed(nil)
-                        return
-                    }
-                    
-                    promise.succeed(image)
+            Later.fetch(url: url) { data in
+                guard let image = UIImage(data: data) else {
+                    promise.succeed(nil)
+                    return
+                }
+                
+                promise.succeed(image)
             }
-            .store(in: &self.bag)
         }
         
     }
@@ -46,8 +35,8 @@ class ViewController: UIViewController {
             Label("Hello World!")
                 .text(alignment: .center)
                 .configure { label in
-                    
-                    Later.default.do(withDelay: 2) {
+
+                    Later.do(withDelay: 2) {
                         DispatchQueue.main.async {
                             label.text = "Later!"
                         }
